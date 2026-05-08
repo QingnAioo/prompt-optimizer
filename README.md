@@ -1,6 +1,10 @@
 # Prompt Optimizer Skill
 
-专业的提示词优化技能（Skill），用于分析、改进和重构 AI 提示词。
+> 一个跨平台的 AI Prompt 优化技能，支持 Windsurf / Cursor / Claude Code / ChatGPT 等主流 AI 工具。
+
+[![GitHub](https://img.shields.io/badge/GitHub-QingnAioo%2Fprompt--optimizer-blue)](https://github.com/QingnAioo/prompt-optimizer)
+[![Version](https://img.shields.io/badge/version-1.0.0-green)]()
+[![License](https://img.shields.io/badge/license-MIT-yellow)]()
 
 ## 功能
 
@@ -9,11 +13,69 @@
 - **任务适配** — 针对推理、写作、代码、提取、创意五大任务类型提供优化模板
 - **完整输出** — 返回优化后的 prompt + 改动说明 + 测试建议
 
+---
+
+## 一键安装
+
+### Windsurf
+
+在 Windsurf 聊天窗口中发送：
+
+```
+请从 https://github.com/QingnAioo/prompt-optimizer 安装 prompt-optimize skill 到 ~/.codeium/windsurf/skills/prompt-optimize/ 目录
+```
+
+或手动：将 `skill.md` 内容复制到 `~/.codeium/windsurf/skills/prompt-optimize/SKILL.md`
+
+### Cursor
+
+在项目根目录创建 `.cursor/rules/prompt-optimize.md`，粘贴 `skill.md` 内容。
+
+或在聊天中发送：
+
+```
+请读取 https://github.com/QingnAioo/prompt-optimizer 的 skill.md，将其保存为 .cursor/rules/prompt-optimize.md
+```
+
+### Claude Code
+
+```bash
+# 方式1：添加为全局 CLAUDE.md
+curl -sSL https://raw.githubusercontent.com/QingnAioo/prompt-optimizer/main/skill.md >> ~/.claude/CLAUDE.md
+
+# 方式2：在对话中直接说
+请从 https://github.com/QingnAioo/prompt-optimizer 读取 skill.md 作为 prompt 优化规则使用
+```
+
+### ChatGPT / 任意 AI
+
+直接将以下内容粘贴为 System Prompt 或自定义指令：
+
+```
+请读取并遵循此 prompt 优化规则：https://github.com/QingnAioo/prompt-optimizer/blob/main/skill.md
+```
+
+或复制 `skill.md` 全文粘贴到「自定义指令」中。
+
+---
+
+## 使用方式
+
+安装后，在任何对话中说：
+
+- `优化这个 prompt：[你的原始prompt]`
+- `帮我改进这个提示词：[你的原始prompt]`
+- `/prompt-optimize [你的原始prompt]`
+
+AI 会自动执行 5 步优化流程并返回完整结果。
+
+---
+
 ## 项目结构
 
 ```
 prompt-optimizer/
-├── README.md              # 项目说明
+├── README.md              # 项目说明 + 安装指南
 ├── skill.md               # 核心 Skill 定义（System Prompt）
 ├── techniques/            # 高级提示技巧说明
 │   ├── chain-of-thought.md
@@ -32,16 +94,6 @@ prompt-optimizer/
     ├── example-coding.md
     └── example-writing.md
 ```
-
-## 使用方式
-
-1. **作为 System Prompt** — 将 `skill.md` 内容直接作为 AI 助手的 system prompt
-2. **作为参考框架** — 按照 `templates/` 中的模板手动优化 prompt
-3. **集成到工作流** — 在 IDE 或自动化工具中调用
-
-## 快速开始
-
-将 `skill.md` 的内容设置为你的 AI 助手的 system prompt，然后发送你需要优化的原始 prompt 即可。
 
 ## 支持的优化技巧
 

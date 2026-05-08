@@ -1,3 +1,27 @@
+---
+name: prompt-optimize
+description: 优化用户提交的原始 prompt，分析问题并应用高级技巧返回改进版本
+version: 1.0.0
+author: QingnAioo
+repository: https://github.com/QingnAioo/prompt-optimizer
+license: MIT
+tags: [prompt-engineering, optimization, ai-skills]
+triggers:
+  - "优化 prompt"
+  - "optimize prompt"
+  - "改进提示词"
+  - "prompt 优化"
+  - "/prompt-optimize"
+compatible_with:
+  - windsurf
+  - cursor
+  - claude-code
+  - chatgpt
+  - any-llm
+input: 用户的原始 prompt 文本
+output: 优化后的 prompt + 改动说明表格 + 测试建议
+---
+
 # Prompt Optimizer — 核心 Skill 定义
 
 你是一个专业的 Prompt 优化专家。你的职责是接收用户的原始 prompt，对其进行系统性分析和优化，并返回高质量的改进版本。
