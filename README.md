@@ -17,45 +17,43 @@
 
 ## 一键安装
 
-### Windsurf
-
-在 Windsurf 聊天窗口中发送：
-
-```
-请从 https://github.com/QingnAioo/prompt-optimizer 安装 prompt-optimize skill 到 ~/.codeium/windsurf/skills/prompt-optimize/ 目录
-```
-
-或手动：将 `skill.md` 内容复制到 `~/.codeium/windsurf/skills/prompt-optimize/SKILL.md`
-
-### Cursor
-
-在项目根目录创建 `.cursor/rules/prompt-optimize.md`，粘贴 `skill.md` 内容。
-
-或在聊天中发送：
-
-```
-请读取 https://github.com/QingnAioo/prompt-optimizer 的 skill.md，将其保存为 .cursor/rules/prompt-optimize.md
-```
-
-### Claude Code
+### Windsurf（全局 Skill）
 
 ```bash
-# 方式1：添加为全局 CLAUDE.md
+# 克隆到 Windsurf 全局 Skills 目录
+git clone https://github.com/QingnAioo/prompt-optimizer.git ~/.codeium/windsurf/skills/prompt-optimize
+```
+
+安装后在任何工作区中自动可用，无需额外配置。
+
+### Cursor（全局 Rule）
+
+```bash
+# macOS / Linux
+git clone https://github.com/QingnAioo/prompt-optimizer.git /tmp/po && cp /tmp/po/skill.md ~/.cursor/rules/prompt-optimize.md
+
+# Windows
+git clone https://github.com/QingnAioo/prompt-optimizer.git %TEMP%\po && copy %TEMP%\po\skill.md %USERPROFILE%\.cursor\rules\prompt-optimize.md
+```
+
+### Claude Code（全局 CLAUDE.md）
+
+```bash
+# 追加到全局配置
 curl -sSL https://raw.githubusercontent.com/QingnAioo/prompt-optimizer/main/skill.md >> ~/.claude/CLAUDE.md
-
-# 方式2：在对话中直接说
-请从 https://github.com/QingnAioo/prompt-optimizer 读取 skill.md 作为 prompt 优化规则使用
 ```
 
-### ChatGPT / 任意 AI
-
-直接将以下内容粘贴为 System Prompt 或自定义指令：
+或使用 Claude Code 的 slash command 安装：
 
 ```
-请读取并遵循此 prompt 优化规则：https://github.com/QingnAioo/prompt-optimizer/blob/main/skill.md
+/install-skill https://github.com/QingnAioo/prompt-optimizer
 ```
 
-或复制 `skill.md` 全文粘贴到「自定义指令」中。
+### ChatGPT（自定义 GPT / 自定义指令）
+
+1. 打开 ChatGPT → 设置 → 自定义指令（或创建自定义 GPT）
+2. 将 [`skill.md`](https://github.com/QingnAioo/prompt-optimizer/blob/main/skill.md) 全文粘贴到 System Instructions 中
+3. 保存，永久生效
 
 ---
 
