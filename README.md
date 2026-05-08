@@ -17,43 +17,52 @@
 
 ## 一键安装
 
+> 所有安装方式均为**永久生效**，安装一次后跨窗口、跨项目自动可用。
+
 ### Windsurf（全局 Skill）
 
-```bash
-# 克隆到 Windsurf 全局 Skills 目录
-git clone https://github.com/QingnAioo/prompt-optimizer.git ~/.codeium/windsurf/skills/prompt-optimize
-```
-
-安装后在任何工作区中自动可用，无需额外配置。
-
-### Cursor（全局 Rule）
+Windsurf 的 Skill 存储在 `~/.codeium/windsurf/skills/` 目录，安装后所有工作区自动识别。
 
 ```bash
 # macOS / Linux
-git clone https://github.com/QingnAioo/prompt-optimizer.git /tmp/po && cp /tmp/po/skill.md ~/.cursor/rules/prompt-optimize.md
+git clone https://github.com/QingnAioo/prompt-optimizer.git ~/.codeium/windsurf/skills/prompt-optimize
 
-# Windows
-git clone https://github.com/QingnAioo/prompt-optimizer.git %TEMP%\po && copy %TEMP%\po\skill.md %USERPROFILE%\.cursor\rules\prompt-optimize.md
+# Windows (PowerShell)
+git clone https://github.com/QingnAioo/prompt-optimizer.git "$env:USERPROFILE\.codeium\windsurf\skills\prompt-optimize"
 ```
 
-### Claude Code（全局 CLAUDE.md）
+**验证安装**：打开 Windsurf → Customizations → Skills 页签，应看到 `prompt-optimize`。
+
+### Cursor（全局 User Rule）
+
+Cursor 的全局规则存储在 Settings 中，对所有项目永久生效。
+
+1. 打开 Cursor → `Settings` → `Rules` → `User Rules`
+2. 将 [`skill.md`](https://raw.githubusercontent.com/QingnAioo/prompt-optimizer/main/skill.md) 全文粘贴到 User Rules 中
+3. 保存
+
+**验证安装**：任意项目中输入"优化这个 prompt"，AI 应按 5 步流程返回结果。
+
+### Claude Code（全局 Settings）
+
+Claude Code 的全局配置存储在 `~/.claude/settings.json`，对所有项目永久生效。
 
 ```bash
-# 追加到全局配置
-curl -sSL https://raw.githubusercontent.com/QingnAioo/prompt-optimizer/main/skill.md >> ~/.claude/CLAUDE.md
+# 创建全局 CLAUDE.md（所有项目共享）
+mkdir -p ~/.claude && curl -sSL https://raw.githubusercontent.com/QingnAioo/prompt-optimizer/main/skill.md >> ~/.claude/CLAUDE.md
 ```
 
-或使用 Claude Code 的 slash command 安装：
+**验证安装**：新开终端运行 `claude`，输入"优化这个 prompt：写个爬虫"，应按 5 步流程返回。
 
-```
-/install-skill https://github.com/QingnAioo/prompt-optimizer
-```
+### ChatGPT（永久自定义指令）
 
-### ChatGPT（自定义 GPT / 自定义指令）
+ChatGPT 的自定义指令对账号下所有新对话永久生效。
 
-1. 打开 ChatGPT → 设置 → 自定义指令（或创建自定义 GPT）
-2. 将 [`skill.md`](https://github.com/QingnAioo/prompt-optimizer/blob/main/skill.md) 全文粘贴到 System Instructions 中
-3. 保存，永久生效
+1. 打开 [ChatGPT](https://chat.openai.com) → 左下角头像 → `Customize ChatGPT`
+2. 在「How would you like ChatGPT to respond?」中粘贴 [`skill.md`](https://raw.githubusercontent.com/QingnAioo/prompt-optimizer/main/skill.md) 全文
+3. 保存
+
+或创建专用 GPT：`New GPT` → 将 `skill.md` 粘贴为 Instructions → 发布。
 
 ---
 
